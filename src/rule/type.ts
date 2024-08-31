@@ -72,7 +72,17 @@ const types = {
     return typeof value === 'string' && !!value.match(pattern.hex);
   },
 };
-
+/**
+ * 定义一个执行规则验证的类型
+ * 此类型用于校验给定数据是否符合一系列预定义的规则
+ * 
+ * @param {Object} rule - 验证规则对象，包含了待验证的规则详情
+ * @param {*} value - 待验证的值
+ * @param {Object} source - 待验证值的来源对象，用于验证嵌套字段
+ * @param {Array} errors - 错误消息数组，用于收集验证失败时的错误信息
+ * @param {Object} options - 额外选项对象，包含了校验逻辑所需的配置
+ * @returns {void}
+ */
 const type: ExecuteRule = (rule, value, source, errors, options) => {
   if (rule.required && value === undefined) {
     required(rule, value, source, errors, options);

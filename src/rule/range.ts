@@ -1,6 +1,6 @@
 import { ExecuteRule } from '../interface';
 import { format } from '../util';
-
+// 定义一个类型为ExecuteRule的range验证规则函数
 const range: ExecuteRule = (rule, value, source, errors, options) => {
   const len = typeof rule.len === 'number';
   const min = typeof rule.min === 'number';

@@ -1,7 +1,7 @@
 import { ExecuteValidator } from '../interface';
 import rules from '../rule';
 import { isEmptyValue } from '../util';
-
+// 定义一个执行验证的函数，用于根据规则对象和值来验证数据的正确性
 const pattern: ExecuteValidator = (rule, value, callback, source, options) => {
   const errors: string[] = [];
   const validate =

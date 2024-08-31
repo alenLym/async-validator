@@ -1,6 +1,6 @@
 import { ExecuteValidator } from '../interface';
 import rules from '../rule/index';
-
+// 定义一个验证器函数，用于根据规则验证数组值的有效性
 const array: ExecuteValidator = (rule, value, callback, source, options) => {
   const errors: string[] = [];
   const validate =
