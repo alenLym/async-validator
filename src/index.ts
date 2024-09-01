@@ -119,9 +119,13 @@ class Schema {
       }
       return Promise.resolve(source);
     }
+
     /**
-     * 完成验证过程的方法，汇总所有验证结果并进行处理
-     * @param results 验证结果数组，每个元素可以是单个验证错误或验证错误数组
+     * 函数 'complete' 接受 'ValidateError' 或 'ValidateError[]' 结果数组，并结合
+     * 它们转换为单个错误数组，然后调用包含错误和源数据的回调
+     * 如果没有错误，或者 错误 和 已转换字段 错误 如果有错误。
+     * @param {（ValidateError |ValidateError[]）[]} 结果 - 'results' 参数是
+     * 'ValidateError' 对象或 'ValidateError' 对象的数组。
      */
     function complete(results: (ValidateError | ValidateError[])[]) {
       let errors: ValidateError[] = [];
@@ -162,6 +166,8 @@ class Schema {
 
     const series: Record<string, RuleValuePackage[]> = {};
     const keys = options.keys || Object.keys(this.rules);
+    /* 上面的 TypeScript 代码正在迭代 key 和 key 中每个 key 的处理规则
+    'this.rules' 对象。以下是代码正在执行的操作的细分：*/
     keys.forEach(z => {
       const arr = this.rules[z];
       let value = source[z];
@@ -200,6 +206,8 @@ class Schema {
       });
     });
     const errorFields = {};
+    /* 上面的代码片段正在实现一个函数，该函数在
+    基于提供的规则的数据对象系列。以下是主要功能的细分：*/
     return asyncMap(
       series,
       options,
